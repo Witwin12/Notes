@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .note {
+            margin-bottom: 20px;
+        }
+        .note-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .note-content {
+            text-indent: 2em;
+            font-size: 1em;
+        }
+        .note-date {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notes</h1>
+    {% if latest_notes_list %}
+        <div>
+            {% for note in latest_notes_list %}
+                <div class="note">
+                    <div class="note-title">{{ note.title }}</div>
+                    <div class="note-date">
+                        Published on: 
+                        {{ note.pub_date|date:"F d, Y" }} at 
+                        {{ note.pub_date|date:"h:i A" }}
+                    </div>
+                    <div class="note-content">{{ note.content }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No notes available.</p>
+    {% endif %}
+</body>
+</html>
+
