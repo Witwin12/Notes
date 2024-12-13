@@ -13,6 +13,13 @@
         h1 {
             text-align: center;
             color: #333;
+            font-size:3em;
+        }
+        .current-time {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
         .note {
             margin-bottom: 20px;
@@ -36,6 +43,9 @@
 </head>
 <body>
     <h1>Notes</h1>
+    <div class="current-time">
+        Current Time: {{ current_time|date:"F d, Y" }} at {{ current_time|date:"h:i A" }}
+    </div>
     {% if latest_notes_list %}
         <div>
             {% for note in latest_notes_list %}
@@ -55,4 +65,3 @@
     {% endif %}
 </body>
 </html>
-
