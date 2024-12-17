@@ -6,6 +6,7 @@ import os
 from django.conf import settings
 from django.http import HttpResponse, Http404
 from urllib.parse import unquote
+from django.views.generic import TemplateView
 
 class IndexView(generic.ListView):
     model = Note
@@ -64,3 +65,5 @@ def directory_browser(request, path=""):
         "items": item_paths,
         "current_path": path,
     })
+class HomePageView(TemplateView):
+    template_name = "notes/home.html"

@@ -16,11 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from django.views.generic import RedirectView
+from notes.views import HomePageView
 
 urlpatterns = [
-    path("notes/", include("notes.urls")),  # Include 'notes' URLs
-    path("admin/", admin.site.urls),       # Admin site
-    path("", RedirectView.as_view(url="/notes/", permanent=True)),  # Redirect root URL to /notes/
+    path("notes/", include("notes.urls")),
+    path("admin/", admin.site.urls),
+    path("", HomePageView.as_view(), name="home"),  # หน้าแรกที่ root URL
 ]
-
