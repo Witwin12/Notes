@@ -19,7 +19,7 @@ from django.urls import include, path
 from notes.views import HomePageView
 
 urlpatterns = [
-    path("notes/", include("notes.urls")),
+    path('notes/', include(('notes.urls', 'notes'), namespace='notes')),
     path("admin/", admin.site.urls),
     path("", HomePageView.as_view(), name="home"),  # หน้าแรกที่ root URL
 ]
